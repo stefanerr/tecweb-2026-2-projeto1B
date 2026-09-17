@@ -1,0 +1,15 @@
+{% extends "notes/base.html" %}
+
+{% block content %}
+<div class="container">
+  <form method="post" class="form-card">
+    {% csrf_token %}
+    <input class="form-card-title" type="text" name="titulo" value="{{ note.title }}" />
+    <textarea class="autoresize" name="detalhes">{{ note.content }}</textarea>
+    <div class="edit-actions">
+      <input class="btn" type="submit" value="Salvar" />
+      <a class="btn cancel-btn" href="{% url 'index' %}">Cancelar</a>
+    </div>
+  </form>
+</div>
+{% endblock %}
