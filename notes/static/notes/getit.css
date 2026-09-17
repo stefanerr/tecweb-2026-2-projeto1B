@@ -1,0 +1,245 @@
+/*
+Algumas informações úteis e dicas:
+  - Fontes disponíveis:
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Permanent Marker', cursive;
+  - Cores:
+    Tons de amarelo:
+      #e4fc2b
+      #e0d426
+      #f7d736
+      #e0af26
+      #fcb02b
+    Tons de cinza:
+      #2c2c2c
+      #4c4c4c
+    Cores dos cards:
+      #ead3a7
+      #9de0f5
+      #ef89ba
+      #fae890
+      #abe9c1
+  - Sombra: https://codepen.io/sdthornton/pen/wBZdXq
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #ffffff;
+}
+
+body {
+  padding-bottom: 60px;
+}
+
+.appbar {
+  display: flex;
+  align-items: center;
+  padding: 18px 30px;
+  background-color: #f7d736;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  margin-bottom: 70px;
+}
+
+.logo {
+  width: 60px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #2c2c2c;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.form-card {
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+  max-width: 100%;
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 25px 30px 30px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 0 25px rgba(0, 0, 0, 0.08);
+  margin-bottom: 60px;
+}
+
+.form-card-title,
+.autoresize {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  color: #4c4c4c;
+  padding: 0;
+}
+
+.form-card-title {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+.autoresize {
+  resize: none;
+  overflow: hidden;
+  min-height: 22px;
+  font-size: 15px;
+  margin-bottom: 22px;
+}
+
+.form-card-title::placeholder,
+.autoresize::placeholder {
+  color: #999999;
+}
+
+.form-erro {
+  color: #b23b3b;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 3px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  background-color: #f7d736;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  color: #2c2c2c;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn > * {
+  position: relative;
+}
+
+.btn:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 0;
+  padding-top: 0;
+  border-radius: 100%;
+  background-color: rgba(236, 240, 241, 0.3);
+  transform: translate(-50%, -50%);
+}
+
+.btn:active:before {
+  width: 120%;
+  padding-top: 120%;
+  transition: width 0.2s ease-out, padding-top 0.2s ease-out;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.edit-actions > * {
+  flex: 1;
+  margin: 0;
+}
+
+.edit-actions .btn {
+  width: 100%;
+}
+
+.cancel-btn {
+  background: #e8e8e8;
+  color: #4c4c4c;
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 45px 30px;
+  max-width: 1300px;
+  padding-bottom: 40px;
+}
+
+.card {
+  width: 250px;
+  min-height: 150px;
+  padding: 20px;
+  border-radius: 3px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.card-title {
+  font-family: "Permanent Marker", cursive;
+  font-size: 19px;
+  color: #2c2c2c;
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+.card-content p {
+  font-family: "Permanent Marker", cursive;
+  font-size: 14px;
+  color: #4c4c4c;
+  line-height: 1.5;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.card-actions a {
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  color: #2c2c2c;
+  text-decoration: none;
+}
+
+.card-actions a:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.card-actions .delete {
+  color: #b23b3b;
+}
+
+.card-color-1 { background-color: #ead3a7; }
+.card-color-2 { background-color: #9de0f5; }
+.card-color-3 { background-color: #ef89ba; }
+.card-color-4 { background-color: #fae890; }
+.card-color-5 { background-color: #abe9c1; }
+
+.card-rotation-1  { transform: rotate(-7deg); }
+.card-rotation-2  { transform: rotate(-5deg); }
+.card-rotation-3  { transform: rotate(-4deg); }
+.card-rotation-4  { transform: rotate(-3deg); }
+.card-rotation-5  { transform: rotate(-1.5deg); }
+.card-rotation-6  { transform: rotate(0deg); }
+.card-rotation-7  { transform: rotate(1.5deg); }
+.card-rotation-8  { transform: rotate(3deg); }
+.card-rotation-9  { transform: rotate(4deg); }
+.card-rotation-10 { transform: rotate(5deg); }
+.card-rotation-11 { transform: rotate(7deg); }
