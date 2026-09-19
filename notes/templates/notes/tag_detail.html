@@ -1,23 +1,11 @@
 {% extends "notes/base.html" %}
-{% load static %}
 
 {% block content %}
 <div class="appbar">
-  <img class="logo" src="{% static 'notes/img/logo-getit.png' %}" />
-  <p class="subtitle">Como o Post-it, mas com outro verbo</p>
+  <p class="subtitle">Tag: {{ tag.name }}</p>
 </div>
 
 <div class="container">
-  <a href="{% url 'tags' %}">Ver tags</a>
-
-  <form method="post" class="form-card">
-    {% csrf_token %}
-    <input class="form-card-title" type="text" name="titulo" placeholder="Título" />
-    <textarea class="autoresize" name="detalhes" placeholder="Detalhes"></textarea>
-    <input class="form-card-title" type="text" name="tag" placeholder="Tag (opcional)" />
-    <input class="btn" type="submit" value="Enviar" />
-  </form>
-
   <div class="card-container">
     {% for note in notes %}
     <div class="card">

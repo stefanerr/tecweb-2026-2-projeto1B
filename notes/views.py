@@ -1,15 +1,21 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Note
+from .models import Note, Tag
+
+
+def get_tag(tag_name):
+    tag_name = tag_name.strip() if tag_name else ''
+    if not tag_name:
+        return None
+    tag, created = Tag.objects.get_or_create(name=tag_name)
+    return tag
 
 
 def index(request):
     if request.method == 'POST':
         title = request.POST.get('titulo')
         content = request.POST.get('detalhes')
-        Note.objects.create(
-            title=title,
-            content=content
-        )
+        tag = get_tag(request.POST.get('tag'))
+        Note.objects.create(title=title, content=content, tag=tag)
         return redirect('index')
     else:
         all_notes = Note.objects.all()
@@ -22,6 +28,7 @@ def edit(request, note_id):
     if request.method == 'POST':
         note.title = request.POST.get('titulo')
         note.content = request.POST.get('detalhes')
+        note.tag = get_tag(request.POST.get('tag'))
         note.save()
         return redirect('index')
 
@@ -32,3 +39,14 @@ def delete(request, note_id):
     note = get_object_or_404(Note, id=note_id)
     note.delete()
     return redirect('index')
+
+
+def tags(request):
+    all_tags = Tag.objects.all()
+    return render(request, 'notes/tags.html', {'tags': all_tags})
+
+
+def tag_detail(request, tag_id):
+    tag = get_object_or_404(Tag, id=tag_id)
+    notes = Note.objects.filter(tag=tag)
+    return render(request, 'notes/tag_detail.html', {'tag': tag, 'notes': notes})

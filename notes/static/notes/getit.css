@@ -243,3 +243,61 @@ body {
 .card-rotation-9  { transform: rotate(4deg); }
 .card-rotation-10 { transform: rotate(5deg); }
 .card-rotation-11 { transform: rotate(7deg); }
+
+.card {
+  position: relative;
+}
+
+.card .card-actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  margin-top: 0;
+  gap: 6px;
+}
+
+.card .card-actions a {
+  background: transparent;
+  padding: 2px;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.tag-badge {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background-color: #f7d736;
+  color: #2c2c2c;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.tags-table {
+  width: 100%;
+  max-width: 900px;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #ffffff;
+}
+
+.tags-table th,
+.tags-table td {
+  padding: 16px 24px;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tags-table thead {
+  background-color: #f7f7f7;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: #4c4c4c;
+}
+
+.tags-table a {
+  text-decoration: none;
+  font-size: 16px;
+}

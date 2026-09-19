@@ -1,0 +1,26 @@
+{% extends "notes/base.html" %}
+
+{% block content %}
+<div class="appbar">
+  <p class="subtitle">Tags</p>
+</div>
+
+<div class="container">
+  <table class="tags-table">
+    <thead>
+      <tr>
+        <th>Tag</th>
+        <th>Anotações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tag in tags %}
+      <tr>
+        <td>#{{ tag.name }}</td>
+        <td><a href="{% url 'tag_detail' tag.id %}">🔗</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
